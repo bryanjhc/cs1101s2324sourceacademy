@@ -1,4 +1,4 @@
-// Brief 5
+// Recitation 5
 
 // Qn 1
 function flatten_list(xs) {
