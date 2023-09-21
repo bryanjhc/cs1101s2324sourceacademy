@@ -66,15 +66,18 @@ function middle(n) {
 }
 // put the first n elements of xs into a list
 function take(xs, n) {
-    return is_null(xs)
+    // YOUR SOLUTION HERE
+    return n === 0
            ? null
            : pair(head(xs), take(tail(xs), n - 1));
 }
-// drop the first n elements from the list and return the rest
+
+// drop the first n elements from list, return rest
 function drop(xs, n) {
+    // YOUR SOLUTION HERE
     return n >= length(xs)
            ? null
-           : pair(list_ref(xs, n + 1), drop(xs, n + 1));
+           : pair(list_ref(xs, n), drop(xs, n + 1));
 }
 // merge two sorted lists into one sorted list
 function merge(xs, ys) {
@@ -99,3 +102,5 @@ function merge_sort(xs) {
     merge_sort(drop(xs, mid)));
     }
 }
+
+merge_sort(xs);
