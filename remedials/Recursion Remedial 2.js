@@ -49,7 +49,7 @@ function append(a, b) {
 
 
 // Qn 3
-function range(a, b, d) {
+function range(a, b, d) { 
     return a > b
            ? null
            : pair(a, range(a + d, b, d));
@@ -72,7 +72,7 @@ function reverse(ls) {
 
 
 // Qn 5
-function merge(xs, ys) {
+function merge(xs, ys) { //merge two sorted lists into a sorted list
     return is_null(xs)
            ? ys
            : is_null(ys)
@@ -87,7 +87,7 @@ function merge(xs, ys) {
 
 
 // Qn 6
-function zip(xs, ys) {
+function zip(xs, ys) { //zip into a list of pairs
     return is_null(xs) && is_null(ys)
            ? null
            : pair(pair(head(xs), head(ys)), zip(tail(xs), tail(ys)));
@@ -97,3 +97,24 @@ function zip(xs, ys) {
 
 
 
+// Qn 7
+function insert(x, xs) { //insert x into sorted list xs
+    return is_null(xs) // either means empty list or x is the largest element
+           ? list(x)
+           : x <= head(xs) // x is the smaller than the head of list
+           ? pair(x, xs) // put x at the start of the list
+           : pair(head(xs), insert(x, tail(xs)));
+}
+// display_list(insert(10, list(1,3,6,8)));
+// insert(4, list(1,3,6,8)) -> list(1,3,4,6,8)
+
+
+
+// Qn 8
+function insertion_sort(lst) {
+    return is_null(lst)
+           ? null
+           : insert(head(lst), insertion_sort(tail(lst)));
+}
+display_list(insertion_sort(list(4,8,2,1)));
+// insertion_sort(list(4,8,2,1)) -> list(1,2,4,8)
