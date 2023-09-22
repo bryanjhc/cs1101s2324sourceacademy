@@ -13,7 +13,7 @@ my_map(x => x + 1, list(1, 2, 3));
 function remove_duplicates(lst) {
     return is_null(lst)
           ? null
-          :pair(head(lst), remove_duplicates(
+          : pair(head(lst), remove_duplicates(
               filter(x => !equal(x, head(lst)), tail(lst))));
 }
 
