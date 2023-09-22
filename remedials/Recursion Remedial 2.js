@@ -81,12 +81,19 @@ function merge(xs, ys) {
            ? pair(head(xs), merge(tail(xs), ys))
            : pair(head(ys), merge(xs, tail(ys)));
 }
-display_list(merge(list(1,3,5), list(2,4,6)));
+// display_list(merge(list(1,3,5), list(2,4,6)));
 //merge(list(1,3,5), list(2,4,6)) -> list(1,2,3,4,5,6)
 
 
 
 // Qn 6
 function zip(xs, ys) {
-    
+    return is_null(xs) && is_null(ys)
+           ? null
+           : pair(pair(head(xs), head(ys)), zip(tail(xs), tail(ys)));
 }
+// display_list(zip(list(1,2,3), list(4,5,6)));
+//zip(list(1,2,3), list(4,5,6)) -> list(pair(1,4), pair(2,5), pair(3,6))
+
+
+
