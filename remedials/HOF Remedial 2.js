@@ -19,7 +19,7 @@ const append = (xs, ys) => accumulate(pair, ys, xs);
 
 
 // Qn 3
-const filter_using_accumulate = (pred, xs) => accumulate((h, t) => pred(h) ? pair(h, t): t, null, xs);
+const filter_using_accumulate = (pred, xs) => accumulate((x1, wish) => pred(x1) ? pair(x1, wish): wish, null, xs);
 display_list(filter_using_accumulate(x => x % 2 !== 0, list(1, 2, 3, 4, 5)));
 
 
