@@ -43,8 +43,12 @@ function flatten_once_wo_HOF(xs) {
 //flatten_once(list(list(list(0)), list(1,2,3), list(4,5,6)))
 // -> list(list(0),1,2,3,4,5,6)
 
-// function flatten_all_the_way(xs) {
-    
-// }
+function flatten_all_the_way(xs) {
+    return is_null(xs)
+           ? null
+           : is_list(head(xs))
+           ? flatten_all_the_way(append(head(xs), tail(xs)))
+           : append(head(xs), flatten_all_the_way(tail(xs)));
+}
 
-display_list(flatten_once_HOF(list(list(list(0)), list(1,2,3), list(4,5,6))));
+display_list(flatten_all_the_way(list(list(list(0)), list(1,2,3), list(4,5,6))));
