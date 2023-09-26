@@ -46,9 +46,13 @@ function flatten_once_wo_HOF(xs) {
 function flatten_all_the_way(xs) {
     return is_null(xs)
            ? null
-           : is_list(head(xs))
-           ? flatten_all_the_way(append(head(xs), tail(xs)))
-           : append(head(xs), flatten_all_the_way(tail(xs)));
+           : !is_list(head(xs)) && !is_list(tail(xs))
+           ? list(head(xs), tail(xs))
+           : !is_list(head(xs))
+           ? pair(head(xs), flatten_all_the_way(tail(xs)))
+           : !is_list(tail(xs))
+           ? append(flatten_all_the_way(head(xs)), tail(xs))
+           : append(flatten_all_the_way(head(xs)), flatten_all_the_way(tail(xs)));
 }
 
-display_list(flatten_all_the_way(list(list(list(0)), list(1,2,3), list(4,5,6))));
+display_list(flatten_all_the_way(list(list(list(0)), list(1,list(2),3), list(4,5,6))));
