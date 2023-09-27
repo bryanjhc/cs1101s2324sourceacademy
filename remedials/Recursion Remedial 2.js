@@ -12,7 +12,6 @@ function fractal(rune, n) {
 // show(fractal(make_cross(rcross), 5));
 
 
-
 // Qn 1
 function enum_list(a, b) {
     return a > b // predicate and consequent given by grandmaster
@@ -116,5 +115,25 @@ function insertion_sort(lst) {
            ? null
            : insert(head(lst), insertion_sort(tail(lst)));
 }
-display_list(insertion_sort(list(4,8,2,1)));
+// display_list(insertion_sort(list(4,8,2,1)));
 // insertion_sort(list(4,8,2,1)) -> list(1,2,4,8)
+
+
+// Seoyeon TA practice qn
+/*
+function fancy_list_repeater that takes in a list and returns
+a list with each element repeated n times consecutively, for example:
+fancy_list_repeater(list(1,2), 3) -> list(1, 1, 1, 2, 2, 2)
+*/
+function fancy_list_repeater(lst, n) {
+    function element_repeater(x1, n) {
+        return n === 0
+               ? null
+               : pair(x1, element_repeater(x1, n - 1));
+    }
+    return accumulate((y1, wish) => append(element_repeater(y1, n), wish), 
+    null, 
+    lst);
+}
+// test
+display_list(fancy_list_repeater(list(6, 3), 5));
