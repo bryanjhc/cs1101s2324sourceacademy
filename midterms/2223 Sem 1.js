@@ -15,13 +15,14 @@ function average_age(recruits) {
     return helper(recruits, 0, 0);
 }
 
-
-// Qn 4
 function average_age_accum(recruits) {
     return accumulate((x1, wish) => head(tail(tail(x1))) + wish, 0, recruits) / length(recruits);
 }
+
 // average_age_accum(recruit_info);
 
+
+// Qn 4
 function split_type(recruits) {
     return accumulate((x, y) => head(tail(x))
                                 ? pair(pair(x, head(y)), tail(y))
@@ -29,7 +30,15 @@ function split_type(recruits) {
                                 pair(null, null),
                                 recruits);
 }
-// display_list(split_type(recruit_info));
+
+function split_type2(recruits) {
+    return accumulate((x, y) => head(tail(x))
+                                ? pair(append(list(x), head(y)), tail(y))
+                                : pair(head(y), append(list(x), tail(y))),
+                                pair(null, null),
+                                recruits);
+}
+// display(split_type(recruit_info));
 
 
 // Qn 5
