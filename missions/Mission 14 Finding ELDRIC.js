@@ -55,7 +55,7 @@ function correct0() {
         move();
     } else {
         let i = 0;
-        while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 32) {
+        while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 48) {
             turnclockwise();
             i = i + 1;
         }
@@ -78,7 +78,7 @@ function correct1() {
         move();
     } else {
         let i = 0;
-        while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 32) {
+        while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 48) {
             turncounterclockwise();
             i = i + 1;
         }
