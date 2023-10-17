@@ -12,6 +12,7 @@
 const motorA = ev3_motorA();
 const motorB = ev3_motorB();
 const robot_eyes = ev3_colorSensor();
+let biasness = 0;
 
 function turncounterclockwise() {
     ev3_runForTime(motorA, 50, -217);
@@ -23,11 +24,12 @@ function turnclockwise() {
     ev3_runForTime(motorB, 50, -217);
     ev3_pause(100);
 }
-function turn90clockwise() {
-            ev3_runForTime(motorA, 800, 217);
-            ev3_runForTime(motorB, 800, -217);
-            ev3_pause(100);
-        }
+function turnclockwisemore() {
+    ev3_runForTime(motorA, 700, 217);
+    ev3_runForTime(motorB, 700, -217);
+    ev3_pause(100);
+}
+
 
 function move() {
     while (ev3_colorSensorGetColor(robot_eyes) === 1) {
@@ -35,10 +37,15 @@ function move() {
         ev3_runForTime(motorB, 60, 100);
         ev3_pause(100);
     }
-    correct();
+    if (biasness === 0) {
+        correct0();
+    } else {
+        correct1();
+    }
+    
 }
 
-function correct() {
+function correct0() {
     let i = 0;
     while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 16) {
         turncounterclockwise();
@@ -47,11 +54,13 @@ function correct() {
     if (ev3_colorSensorGetColor(robot_eyes) === 1) {
         move();
     } else {
+        let i = 0;
         while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 32) {
             turnclockwise();
             i = i + 1;
         }
         if (ev3_colorSensorGetColor(robot_eyes) === 1) {
+            biasness = 1;
             move();
         } else {
             return undefined;
@@ -59,4 +68,27 @@ function correct() {
     }
 }
 
-correct();
+function correct1() {
+    let i = 0;
+    while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 16) {
+        turnclockwise();
+        i = i + 1;
+    }
+    if (ev3_colorSensorGetColor(robot_eyes) === 1) {
+        move();
+    } else {
+        let i = 0;
+        while (ev3_colorSensorGetColor(robot_eyes) !== 1 && i < 32) {
+            turncounterclockwise();
+            i = i + 1;
+        }
+        if (ev3_colorSensorGetColor(robot_eyes) === 1) {
+            biasness = 0;
+            move();
+        } else {
+            return undefined;
+        }
+    }
+}
+
+correct0();
