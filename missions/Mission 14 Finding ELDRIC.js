@@ -1,14 +1,14 @@
 // Mission 14 Finding ELDRIC
 
-// // Qn 1
-// const robot_eyes = ev3_colorSensor();
-// while (true) {
-//     display(ev3_reflectedLightIntensity(robot_eyes));
-//     ev3_pause(1000);
-// }
+// Qn 1
+const robot_eyes = ev3_colorSensor();
+while (true) {
+    display(ev3_reflectedLightIntensity(robot_eyes));
+    ev3_pause(1000);
+}
 
 
-// Qn 2
+// Qn 2 & 3
 const motorA = ev3_motorA();
 const motorB = ev3_motorB();
 const robot_eyes = ev3_colorSensor();
