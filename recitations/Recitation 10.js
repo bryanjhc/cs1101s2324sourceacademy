@@ -63,26 +63,32 @@ stream_ref(x1, 5);
 
 
 // Task 2
-// const increasingnumbers = (n) => pair(n, () => increasingnumbers(n * 10 + n));
+const increasingnumbers = (curr, n) => pair(curr, 
+                                    () => increasingnumbers(curr * 10 + n, n));
 
-// function zip_list_of_streams(list_of_streams) {
-//     return pair(head(head(list_of_streams)),
-//                 () => zip_list_of_streams(stream_append(tail(head(list_of_streams)),
-//                                                  stream_tail(list_of_streams))));
-// }
+function zip_list_of_streams(list_of_streams) {
+    return pair(head(head(list_of_streams)), // Take first element from s1
+                () => zip_list_of_streams(append(tail(list_of_streams),
+                                    list(stream_tail(head(list_of_streams))))));
+        /* Thereafter, we call zip list of streams on a 
+        new list (s2, s3, stream_tail(s1)) then let the
+        process repeat */
+}
 
 
-// const s1 = increasingnumbers(1);
-// const s2 = increasingnumbers(2);
-// const s3 = increasingnumbers(3);
-// const ss = zip_list_of_streams(list(s1, s2, s3));
+const s1 = increasingnumbers(1, 1);
+const s2 = increasingnumbers(2, 2);
+const s3 = increasingnumbers(3, 3);
+// eval_stream(s3, 10);
+const ss = zip_list_of_streams(list(s1, s2, s3));
 
-// eval_stream(ss, 6);
+eval_stream(ss, 10);
 
+
+// Task 3
 function partial_sums(s) {
     return pair(head(s), () => add_streams(stream_tail(s), partial_sums(s)));
 }
 
 const str = integers_from(1);
-
-stream_tail(partial_sums(str));
+eval_stream(partial_sums(str), 10);
