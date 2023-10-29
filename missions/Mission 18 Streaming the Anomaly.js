@@ -40,21 +40,10 @@ function array_to_stream(a) {
 
 function stream_to_filter(s) {
     // your solution goes here
-    const height = image_height();
-    const width = image_width();
-    let pointer = s;
     return (src, dest) => {
-        while (!is_null(pointer)) {
-            const curr_img = head(pointer);
-            for (let i = 0; i < height; i = i + 1) {
-                for (let j = 0; j < width; j = j + 1) {
-                    dest[i][j][0] = curr_img[i][j][0];
-                    dest[i][j][1] = curr_img[i][j][1];
-                    dest[i][j][2] = curr_img[i][j][2];
-                    dest[i][j][3] = curr_img[i][j][3];
-                }
-            }
-            pointer = stream_tail(pointer);
+        if (!is_null(s)) {
+            copy_image(head(s), dest);
+            s = stream_tail(s);
         }
     };
 }
@@ -88,21 +77,10 @@ function array_to_stream(a) {
 // Your stream_to_filter function from TASK 2 goes here.
 function stream_to_filter(s) {
     // your solution goes here
-    const height = image_height();
-    const width = image_width();    
-    let pointer = s;
     return (src, dest) => {
-        while (!is_null(pointer)) {
-            const curr_img = head(pointer);
-            for (let i = 0; i < height; i = i + 1) {
-                for (let j = 0; j < width; j = j + 1) {
-                    dest[i][j][0] = curr_img[i][j][0];
-                    dest[i][j][1] = curr_img[i][j][1];
-                    dest[i][j][2] = curr_img[i][j][2];
-                    dest[i][j][3] = curr_img[i][j][3];
-                }
-            }
-            pointer = stream_tail(pointer);
+        if (!is_null(s)) {
+            copy_image(head(s), dest);
+            s = stream_tail(s);
         }
     };
 }
@@ -147,21 +125,10 @@ function array_to_stream(a) {
 // Your stream_to_filter function from TASK 2 goes here.
 function stream_to_filter(s) {
     // your solution goes here
-    const height = image_height();
-    const width = image_width();    
-    let pointer = s;
     return (src, dest) => {
-        while (!is_null(pointer)) {
-            const curr_img = head(pointer);
-            for (let i = 0; i < height; i = i + 1) {
-                for (let j = 0; j < width; j = j + 1) {
-                    dest[i][j][0] = curr_img[i][j][0];
-                    dest[i][j][1] = curr_img[i][j][1];
-                    dest[i][j][2] = curr_img[i][j][2];
-                    dest[i][j][3] = curr_img[i][j][3];
-                }
-            }
-            pointer = stream_tail(pointer);
+        if (!is_null(s)) {
+            copy_image(head(s), dest);
+            s = stream_tail(s);
         }
     };
 }
