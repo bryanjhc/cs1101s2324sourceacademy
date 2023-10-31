@@ -1,4 +1,4 @@
-// Studio 11
+// Studio 11 Streams
 
 // Qn 1
 function scale_stream(c, stream) {
