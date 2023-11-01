@@ -32,7 +32,7 @@ function char_stream(s) {
         const curr = char_at(s, pos);
         return curr === undefined
                ? null
-               : pair(char_at(s, pos), () => helper_cstr(pos + 1));
+               : pair(curr, () => helper_cstr(pos + 1));
     }
     return helper_cstr(0);
 }
@@ -103,7 +103,8 @@ function multiply_poly(poly1, poly2) {
                                     wish2), null, poly2),
                                 wish1), 
                         null, poly1); /* outside accumulate traversing
-                                        each value of poly1 */
+                                        each value of poly1 
+                                        you can also use double map*/ 
 }
 
 
