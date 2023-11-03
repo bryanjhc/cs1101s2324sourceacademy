@@ -133,6 +133,28 @@ function make_postfix_exp(bae) {
 const bae = [ [8, "-", 2], "*", [7, "+", 3] ];
 make_postfix_exp(bae);  // returns [8, 2, "-", 7, 3, "+", "*"]
 
+// TASK 3A shorter solution
+function make_postfix_exp(bae) {
+    const pfe_arr = [];
+    let pointer = 0;
+    
+    function helper(bae) {
+        let i = 0;
+        if (is_number(bae)) {
+            pfe_arr[pointer] = bae;
+            pointer = pointer + 1;
+        } else { // means bae is an array
+            helper(bae[0]); // left operand
+            helper(bae[2]); // right operand
+            pfe_arr[pointer] = bae[1]; pointer = pointer + 1; // operator
+        }
+    }
+    helper(bae);
+    return pfe_arr;
+}
+const bae = [ [8, "-", 2], "*", [7, "+", 3] ];
+make_postfix_exp(bae);  // returns [8, 2, "-", 7, 3, "+", "*"]
+
 
 // TASK 3B
 function eval_postfix_exp(pfe) {
