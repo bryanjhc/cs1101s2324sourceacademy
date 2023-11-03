@@ -38,6 +38,28 @@ function route_distance(mat, route) {
            ? 0
            : mat[head(route)][head(tail(route))] + route_distance(mat, tail(route));
 }
+// TASK 2A for-loop
+function route_distance(mat, route) {
+    // ur solution here
+    const len = length(route);
+    if (len < 2) {
+        return 0;
+    } else {
+        let sum = 0;
+        for (let i = 0; i < len - 1; i = i + 1) {
+            sum = sum + mat[head(route)][head(tail(route))];
+            route = tail(route);
+        }
+        return sum;
+    }
+}
+
+const mat = [[0, 1, 2, 3],
+             [2, 0, 5, 6],
+             [3, 3, 0, 4],
+             [4, 4, 5, 0]];
+const route = list(2, 1, 3, 1);
+route_distance(mat, route); // returns 13 (= 3 + 6 + 4)
 
 
 // TASK 2B
