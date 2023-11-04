@@ -1,4 +1,18 @@
 //IF THIS FUCKING CRASHES AGAIN IM GONNA FUCKING
+
+/*
+theres always bugs, most common i come across:
+
+- index + 1 or -1 issues (cos zero indexing vv confusing)
+- semi-colons, always
+- forgot to pass in all arguments, in this case, every recursive call to route_distance i must still pass in mat as the first argument even if mat stays the same throughout
+- account for all cases(eg. for sum_k_list i did not account for the fact that k_list can be just a number itself and not a list)
+- check whether the inputs are supposed to be pairs or lists or streams or arrays (distinguish between the data types)
+- for loop check the semicolons in the intialisation
+- if statement check that conditions is surrounded in brackets
+- nested conditionals only need one semicolon at the end
+*/
+
 function rotate_matrix(M){
     const l= array_length(M);
     const ll= math_floor(l/2);
